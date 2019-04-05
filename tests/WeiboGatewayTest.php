@@ -40,6 +40,7 @@ class WeiboGatewayTest extends TestCase
         ],
     ];
 
+    /*
     public function testUrlShorten()
     {
         $shortUrl = new ShortUrl($this->config);
@@ -55,6 +56,7 @@ class WeiboGatewayTest extends TestCase
             print_r($exception->getExceptions());
         }
     }
+    */
 
     public function testUrlExpand()
     {

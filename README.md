@@ -2,6 +2,9 @@
 
 <p align="center">一键生成和还原短链接的 PHP 扩展包，我们支持多平台了哦!</p>
 
+[![Build Status](https://travis-ci.org/achais/shorturl.svg?branch=master)](https://travis-ci.org/achais/shorturl)
+![StyleCI build status](https://github.styleci.io/repos/179630448/shield) 
+
 ## 特点
 
 1. 支持目前市面多家服务商

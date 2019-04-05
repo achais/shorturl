@@ -14,9 +14,8 @@
 
 ## 平台支持
 
-- 微博 (t.cn)
-- 淘宝 (tb.cn)
-- 百度 (dwz.cn)
+- [百度 短链](https://dwz.cn/)
+- [微博 短链](https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)
 
 ## 环境要求
 
@@ -31,6 +30,8 @@ $ composer require achais/shorturl -vvv
 ## 使用
 
 ```php
+use Achais\ShortUrl\ShortUrl;
+
 $config = [
     // HTTP 请求的超时时间（秒）
     'timeout' => 5.0,
@@ -42,7 +43,7 @@ $config = [
 
         // 默认可用的发送网关
         'gateways' => [
-            'weibo',
+            'baidu',
         ],
     ],
 
@@ -51,8 +52,11 @@ $config = [
         'errorlog' => [
             'file' => '/tmp/short_url.log',
         ],
+        'baidu' => [
+            'token' => '44712d2fdaaa48d0a717866e9a******',
+        ],
         'weibo' => [
-            'source' => '1771219659',
+            'source' => '1771******',
         ],
         //...
     ],
@@ -60,17 +64,31 @@ $config = [
 
 $shortUrl = new ShortUrl($config);
 
+// 长链接 -> 短链接
+$long_url = 'https://www.achais.com';
+$result = $shortUrl->shorten($long_url);
+print_r($result);
+
 // 短链接 -> 长链接
-$short_url = 'http://t.cn/EiReech';
+$short_url = 'https://dwz.cn/ZzVmHQZa';
 $result = $shortUrl->expand($short_url);
 var_dump($result);
+```
 
-// 长链接 -> 短链接
-$long_url = 'https://weibo.com/achaiszheng';
-$result = $shortUrl->shorten($long_url);
-var_dump($result);
+## 各平台配置说明
 
-// 长链接 -> 短链接, 微博做了限制请先保证你有权限调用
+### [百度 短链](https://dwz.cn/)
+```php
+'baidu' => [
+    'token' => ''
+],
+```
+
+### [微博 短链](https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)
+```php
+'weibo' => [
+    'source' => ''
+],
 ```
 
 ## 贡献

@@ -1,6 +1,6 @@
 {
     "name": "achais\/shorturl",
-    "description": "Package description here.",
+    "description": "一键生成和还原短链接的 PHP 扩展包",
     "license": "MIT",
     "authors": [
         {

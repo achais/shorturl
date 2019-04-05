@@ -49,9 +49,6 @@ $config = [
 
     // 可用的网关配置
     'gateways' => [
-        'errorlog' => [
-            'file' => '/tmp/short_url.log',
-        ],
         'baidu' => [
             'token' => '44712d2fdaaa48d0a717866e9a******',
         ],

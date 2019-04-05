@@ -1,9 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 14:38
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Traits;
@@ -43,7 +46,7 @@ trait HasHttpRequest
     {
         return $this->request('post', $endpoint, [
             'headers' => $headers,
-            'form_params' => $params
+            'form_params' => $params,
         ]);
     }
 
@@ -56,11 +59,11 @@ trait HasHttpRequest
      *
      * @return array|ResponseInterface|string
      */
-    protected function postJson($endpoint, $params = [], $headers= [])
+    protected function postJson($endpoint, $params = [], $headers = [])
     {
         return $this->request('post', $endpoint, [
             'headers' => $headers,
-            'json' => $params
+            'json' => $params,
         ]);
     }
 
@@ -89,6 +92,7 @@ trait HasHttpRequest
             'base_uri' => method_exists($this, 'getBaseUri') ? $this->getBaseUri() : '',
             'timeout' => method_exists($this, 'getTimeout') ? $this->getTimeout() : 5.0,
         ];
+
         return $options;
     }
 
@@ -120,6 +124,7 @@ trait HasHttpRequest
         } elseif (false !== stripos($contentType, 'xml')) {
             return json_decode(json_encode(simplexml_load_string($contents)), true);
         }
+
         return $contents;
     }
 }

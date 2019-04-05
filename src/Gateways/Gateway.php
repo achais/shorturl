@@ -1,13 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 17:09
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Gateways;
-
 
 use Achais\ShortUrl\Contracts\GatewayInterface;
 use Achais\ShortUrl\Support\Config;
@@ -59,6 +61,6 @@ abstract class Gateway implements GatewayInterface
 
     public function getName()
     {
-        return \strtolower(str_replace([__NAMESPACE__ . '\\', 'Gateway'], '', \get_class($this)));
+        return \strtolower(str_replace([__NAMESPACE__.'\\', 'Gateway'], '', \get_class($this)));
     }
 }

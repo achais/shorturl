@@ -1,16 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 15:02
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl;
 
 use Closure;
 use Achais\ShortUrl\Contracts\StrategyInterface;
-use Achais\ShortUrl\Contracts\UrlInterface;
 use Achais\ShortUrl\Strategies\OrderStrategy;
 use Achais\ShortUrl\Support\Config;
 use Achais\ShortUrl\Contracts\GatewayInterface;
@@ -68,15 +70,16 @@ class ShortUrl
         if (!isset($this->gateways[$name])) {
             $this->gateways[$name] = $this->createGateway($name);
         }
+
         return $this->gateways[$name];
     }
 
     public function extend($name, Closure $callback)
     {
         $this->customCreators[$name] = $callback;
+
         return $this;
     }
-
 
     public function getConfig()
     {
@@ -110,6 +113,7 @@ class ShortUrl
         if (!($gateway instanceof GatewayInterface)) {
             throw new InvalidArgumentException(\sprintf('Gateway "%s" must implement interface %s.', $name, GatewayInterface::class));
         }
+
         return $gateway;
     }
 
@@ -124,7 +128,8 @@ class ShortUrl
             return $name;
         }
         $name = \ucfirst(\str_replace(['-', '_', ''], '', $name));
-        return __NAMESPACE__ . "\\Gateways\\{$name}Gateway";
+
+        return __NAMESPACE__."\\Gateways\\{$name}Gateway";
     }
 
     protected function makeGateway($gateway, $config)
@@ -132,6 +137,7 @@ class ShortUrl
         if (!\class_exists($gateway) || !\in_array(GatewayInterface::class, \class_implements($gateway))) {
             throw new InvalidArgumentException(\sprintf('Class "%s" is a invalid shorturl gateway.', $gateway));
         }
+
         return new $gateway($config);
     }
 
@@ -164,7 +170,7 @@ class ShortUrl
 
     public function formatUrl($url)
     {
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+        if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             throw new InvalidArgumentException(\sprintf('Url "%s" is invalid.', $url));
         }
 
@@ -185,6 +191,7 @@ class ShortUrl
         if (empty($this->strategies[$strategy]) || !($this->strategies[$strategy] instanceof StrategyInterface)) {
             $this->strategies[$strategy] = new $strategy($this);
         }
+
         return $this->strategies[$strategy];
     }
 }

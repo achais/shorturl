@@ -40,24 +40,35 @@ class WeiboGatewayTest extends TestCase
         ],
     ];
 
+    public function testUrlShorten()
+    {
+        $shortUrl = new ShortUrl($this->config);
+
+        try {
+            // 长链接 -> 短链接
+            // 微博做了限制有权限才可以调用
+            $long_url = 'https://www.achais.com';
+            $result = $shortUrl->shorten($long_url);
+            //var_dump($result);
+            $this->assertArrayHasKey('weibo', $result);
+        } catch (Exception $exception) {
+            print_r($exception->getExceptions());
+        }
+    }
+
     public function testUrlExpand()
     {
         $shortUrl = new ShortUrl($this->config);
 
-        // 短链接 -> 长链接
-        $short_url = 'http://t.cn/EiReech';
-        $result = $shortUrl->expand($short_url);
-        //var_dump($result);
-        $this->assertArrayHasKey('weibo', $result);
-
-        // 长链接 -> 短链接
-        // 微博做了限制指定应用才可以调用, 这里不做演示
-        /*
-        $long_url = 'https://weibo.com/achaiszheng';
-        $result = $shortUrl->shorten($long_url);
-        var_dump($result);
-        $this->assertArrayHasKey('weibo', $result);
-        */
+        try {
+            // 短链接 -> 长链接
+            $short_url = 'http://t.cn/EiReech';
+            $result = $shortUrl->expand($short_url);
+            //var_dump($result);
+            $this->assertArrayHasKey('weibo', $result);
+        } catch (Exception $exception) {
+            print_r($exception->getExceptions());
+        }
     }
 }
 

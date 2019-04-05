@@ -1,16 +1,16 @@
 <h1 align="center"> ShortUrl </h1>
 
-<p align="center">一款满足你一键生成和还原短链接的 PHP 扩展包，我们支持多平台了哦!</p>
+<p align="center">一键生成和还原短链接的 PHP 扩展包，我们支持多平台了哦!</p>
 
 ## 特点
 
-1.支持目前市面多家服务商
-2.一套写法兼容所有平台
-3.简单配置即可灵活增减服务商
-4.内置多种服务商轮询策略、支持自定义轮询策略
-5.统一的返回值格式，便于日志与监控
-6.自动轮询选择可用的服务商
-7.更多等你去发现与改进...
+1. 支持目前市面多家服务商
+2. 一套写法兼容所有平台
+3. 简单配置即可灵活增减服务商
+4. 内置多种服务商轮询策略、支持自定义轮询策略
+5. 统一的返回值格式，便于日志与监控
+6. 自动轮询选择可用的服务商
+7. 更多等你去发现与改进...
 
 ## 平台支持
 
@@ -30,7 +30,48 @@ $ composer require achais/shorturl -vvv
 
 ## 使用
 
-TODO
+```php
+$config = [
+    // HTTP 请求的超时时间（秒）
+    'timeout' => 5.0,
+
+    // 默认使用配置
+    'default' => [
+        // 网关调用策略，默认：顺序调用
+        'strategy' => \Achais\ShortUrl\Strategies\OrderStrategy::class,
+
+        // 默认可用的发送网关
+        'gateways' => [
+            'weibo',
+        ],
+    ],
+
+    // 可用的网关配置
+    'gateways' => [
+        'errorlog' => [
+            'file' => '/tmp/short_url.log',
+        ],
+        'weibo' => [
+            'source' => '1771219659',
+        ],
+        //...
+    ],
+];
+
+$shortUrl = new ShortUrl($config);
+
+// 短链接 -> 长链接
+$short_url = 'http://t.cn/EiReech';
+$result = $shortUrl->expand($short_url);
+var_dump($result);
+
+// 长链接 -> 短链接
+$long_url = 'https://weibo.com/achaiszheng';
+$result = $shortUrl->shorten($long_url);
+var_dump($result);
+
+// 长链接 -> 短链接, 微博做了限制请先保证你有权限调用
+```
 
 ## 贡献
 

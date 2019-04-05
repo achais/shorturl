@@ -1,13 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 15:47
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Gateways;
-
 
 use Achais\ShortUrl\Exceptions\GatewayErrorException;
 use Achais\ShortUrl\Support\Config;
@@ -18,6 +20,7 @@ class WeiboGateway extends Gateway
     use HasHttpRequest;
 
     const SHORTEN_URL = 'http://api.weibo.com/2/short_url/shorten.json';
+
     const EXPAND_URL = 'http://api.weibo.com/2/short_url/expand.json';
 
     public function shorten($url, Config $config)
@@ -30,6 +33,7 @@ class WeiboGateway extends Gateway
         if (!isset($result['urls'])) {
             throw new GatewayErrorException();
         }
+
         return $result;
     }
 
@@ -43,6 +47,7 @@ class WeiboGateway extends Gateway
         if (!isset($result['urls'])) {
             throw new GatewayErrorException();
         }
+
         return $result;
     }
 }

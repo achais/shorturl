@@ -1,15 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 14:37
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Exceptions;
 
-
 class RuntimeException extends Exception
 {
-
 }

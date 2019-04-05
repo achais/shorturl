@@ -1,13 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 15:47
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Gateways;
-
 
 use Achais\ShortUrl\Exceptions\GatewayErrorException;
 use Achais\ShortUrl\Support\Config;
@@ -18,6 +20,7 @@ class BaiduGateway extends Gateway
     use HasHttpRequest;
 
     const SHORTEN_URL = 'https://dwz.cn/admin/v2/create';
+
     const EXPAND_URL = 'https://dwz.cn/admin/v2/query';
 
     public function shorten($url, Config $config)
@@ -30,9 +33,10 @@ class BaiduGateway extends Gateway
             'url' => $url,
         ];
         $result = $this->postJson(self::SHORTEN_URL, $params, $headers);
-        if (!isset($result['Code']) || $result['Code'] !== 0) {
+        if (!isset($result['Code']) || 0 !== $result['Code']) {
             throw new GatewayErrorException();
         }
+
         return $result;
     }
 
@@ -46,9 +50,10 @@ class BaiduGateway extends Gateway
             'shortUrl' => $url,
         ];
         $result = $this->postJson(self::EXPAND_URL, $params, $headers);
-        if (!isset($result['Code']) || $result['Code'] !== 0) {
+        if (!isset($result['Code']) || 0 !== $result['Code']) {
             throw new GatewayErrorException();
         }
+
         return $result;
     }
 }

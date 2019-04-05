@@ -1,9 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: achais
- * Date: 2019-04-05
- * Time: 16:43
+
+/*
+ * This file is part of the achais/shorturl.
+ *
+ * (c) achais <i@achais.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Achais\ShortUrl\Exceptions;
@@ -16,6 +19,7 @@ class NoGatewayAvailableException extends Exception
      * @var array
      */
     public $results = [];
+
     /**
      * @var array
      */
@@ -24,8 +28,8 @@ class NoGatewayAvailableException extends Exception
     /**
      * NoGatewayAvailableException constructor.
      *
-     * @param array $results
-     * @param int $code
+     * @param array           $results
+     * @param int             $code
      * @param \Throwable|null $previous
      */
     public function __construct(array $results = [], $code = 0, Throwable $previous = null)

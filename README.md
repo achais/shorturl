@@ -18,7 +18,7 @@
 ## 平台支持
 
 - [百度 短链](https://dwz.cn/)
-- [微博 短链](https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)
+- [微博 短链](https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)（官方功能已下线）
 
 ## 环境要求
 

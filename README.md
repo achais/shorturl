@@ -101,12 +101,6 @@ You can contribute in one of three ways:
 
 _The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
 
-## 参考
-- [overtrue/easy-sms](https://github.com/overtrue/easy-sms)
-
-## 特别鸣谢
-- [安正超](https://github.com/overtrue)
-
 ## License
 
 MIT

@@ -99,8 +99,6 @@ trait HasHttpRequest
     /**
      * 返回 http client.
      *
-     * @param array $options
-     *
      * @return Client
      */
     protected function getHttpClient(array $options = [])
@@ -110,8 +108,6 @@ trait HasHttpRequest
 
     /**
      * 转换 response 内容为 json.
-     *
-     * @param ResponseInterface $response
      *
      * @return ResponseInterface|array|string
      */
